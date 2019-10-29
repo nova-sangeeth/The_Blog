@@ -34,3 +34,23 @@ def post_create(request):
         'form': form
     }
     return render(request, "posts_create.html", context)
+
+
+def post_update(request, slug):
+  #  unique_post = get_object_or_404(Post, slug=slug)
+    unique_post = Post, slug=slug
+    form = PostModelForm(request.POST or None,
+                         request.FILES or None,
+                         instance=unique_post)
+    if form.is_valid():
+        form.save()
+        return redirect('/posts_lists.html/')
+    context = {
+        'form': form
+    }
+    return render(request,"posts")
+
+def post_delete(request,slug):
+    unique_post = get_object_or_404(Post, slug=slug)
+    unique_post.delete()
+    return redirect('/posts_lists.html/')
