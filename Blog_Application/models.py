@@ -5,7 +5,7 @@ User = settings.AUTH_USER_MODEL
 class Post(models.Model):
     title = models.CharField(max_length=256)
     description = models.TextField()
-    author = models.OneToOneField('Author', on_delete=models.SET_NULL, null=True)
+    author = models.ForeignKey('Author', on_delete=models.SET_NULL, null=True)
     image = models.ImageField()
     slug = models.SlugField()
     def __str__(self):
