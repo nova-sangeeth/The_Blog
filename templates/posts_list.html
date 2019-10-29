@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-{% extends base.html %}
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,7 +8,9 @@
 <body>
 <h2>Hello there!!</h2>
 {% block content %}
-    {{ all_posts }}
+    {% for post in all_posts %}
+        {{ all_posts }}
+    {% endfor %}
 {% endblock %}
 </body>
 </html>
